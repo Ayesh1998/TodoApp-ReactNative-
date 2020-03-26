@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import Header from "./components/header";
 import TodoItem from "./components/todoItem";
+import AddTodo from "./components/addTodo";
 
 export default function App() {
+  var count = 7;
+
   const [todos, settodos] = useState([
     { text: "Fishing", key: "1" },
     { text: "Fishing", key: "2" },
@@ -18,10 +21,17 @@ export default function App() {
     });
   };
 
+  const addItem = text => {
+    var obj = { text: text, key: Math.random().toString() };
+    var todoss = [obj, ...todos];
+    settodos(todoss);
+  };
+
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
+        <AddTodo addItem={addItem} />
         <View style={styles.list}>
           {/*  */}
           <FlatList
