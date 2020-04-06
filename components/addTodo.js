@@ -4,24 +4,24 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 const AddTodo = ({ addItem }) => {
   const [text, settext] = useState("");
 
-  const changeHandler = value => {
+  const changeHandler = (value) => {
     settext(value);
+  };
+
+  const submitHandler = () => {
+    addItem(text);
+    settext("");
   };
 
   return (
     <View>
       <TextInput
         style={styles.input}
+        value={text}
         placeholder="new todo.."
         onChangeText={changeHandler}
       />
-      <Button
-        onPress={() => {
-          addItem(text);
-        }}
-        title="Add"
-        color="coral"
-      />
+      <Button onPress={submitHandler} title="Add" color="coral" />
     </View>
   );
 };
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 6,
     borderBottomWidth: 1,
-    borderBottomColor: "#ddd"
-  }
+    borderBottomColor: "#ddd",
+  },
 });
 
 export default AddTodo;

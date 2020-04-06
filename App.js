@@ -15,13 +15,7 @@ import AddTodo from "./components/addTodo";
 export default function App() {
   var count = 7;
 
-  const [todos, settodos] = useState([
-    { text: "Fishing", key: "1" },
-    { text: "Fishing", key: "2" },
-    { text: "Fishing", key: "3" },
-    { text: "Fishing", key: "4" },
-    { text: "Fishing", key: "5" }
-  ]);
+  const [todos, settodos] = useState([]);
 
   const pressHandler = id => {
     settodos(prevState => {
@@ -58,12 +52,16 @@ export default function App() {
           <AddTodo addItem={addItem} />
           <View style={styles.list}>
             {/*  */}
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoItem item={item} pressHandler={pressHandler} />
-              )}
-            />
+            {!todos.length ? (
+              <Text style={styles.errorText}>Todo items are empty</Text>
+            ) : (
+              <FlatList
+                data={todos}
+                renderItem={({ item }) => (
+                  <TodoItem item={item} pressHandler={pressHandler} />
+                )}
+              />
+            )}
           </View>
         </View>
       </View>
@@ -86,5 +84,10 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     marginTop: 20
+  },
+  errorText: {
+    color: "red",
+    textAlign: "center",
+    fontWeight: "bold"
   }
 });

@@ -1,17 +1,19 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "TodoApp",
+    "name": "Todo App",
+    "slug": "todo-app",
+    "android": {
+      "package": "com.ayesh.todoapp",
+      "versionCode": 1,
+      "permissions": [],
+      "icon": "./assets/todo.png"
+    },
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/todo.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -20,11 +22,6 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    "assetBundlePatterns": ["**/*"]
   }
 }
